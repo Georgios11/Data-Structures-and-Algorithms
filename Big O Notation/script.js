@@ -31,3 +31,7 @@ const t4 = performance.now();
 //---------//
 
 // Counting Operations
+
+//Visualizing Time Complexity
+
+//https://rithmschool.github.io/function-timer-demo/

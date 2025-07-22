@@ -51,3 +51,7 @@ Big O notation provides a standardized way to describe algorithm performance wit
 ## Counting Operations
 
 - Rather than counting time, which is also variable, we count the _number_ of operations the computer has to perform
+
+## Visualizing Time Complexity
+
+[<Performance>Performance Tracker</u> ->](https://rithmschool.github.io/function-timer-demo/)
