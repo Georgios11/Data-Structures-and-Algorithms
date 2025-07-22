@@ -1,6 +1,6 @@
 # Big O Notation
 
-## Intro
+## The Need for Big O Notation
 
 - It is important to have a precise vocabulary to talk about how our code performs
 - Useful for discussing trade-offs between different approaches
@@ -47,3 +47,7 @@ When evaluating code performance, consider:
 ### The Solution: Big O Notation
 
 Big O notation provides a standardized way to describe algorithm performance without relying on timing measurements. It focuses on the **worst-case scenario** and how the algorithm scales with input size.
+
+## Counting Operations
+
+- Rather than counting time, which is also variable, we count the _number_ of operations the computer has to perform
