@@ -55,3 +55,95 @@ Big O notation provides a standardized way to describe algorithm performance wit
 ## Visualizing Time Complexity
 
 [<Performance>Performance Tracker</u> ->](https://rithmschool.github.io/function-timer-demo/)
+
+## Intro to Big O Notation
+
+**It allows us to talk formally about how the runtime of an algorithm grows as the input grows**
+It is a way to describe the upper bound (worst case scenario) of how the run time or space requirements of an algorithm grow in relation to the size of the input.
+
+O-> Order Of
+
+## Time Complexity
+
+- What is runtime?
+  - Runtime is the measure of something in seconds, milliseconds or any other unit
+
+**Time Complexity is how the runtime scales as the input grows. This is how we understand how a function/algorithm performs**
+
+### Main Types of Time Complexity
+
+- Constant: O(1) -> O of 1
+  Runtime stays the same no matter how big the input is
+- Linear: O(n) -> O of n
+  Runtime scales linearly as the input grows (45 degree angle)
+- Quadratic: O(n²) -> O of n squared
+  Runtime scales quadratically as the input grows
+- Logarithmic: O(log n) -> O of log n
+  Runtime scales logarithmically as the input grows
+
+### Array Operations Complexity Table
+
+| Operation                | Time Complexity | Space Complexity | Description                        |
+| ------------------------ | --------------- | ---------------- | ---------------------------------- |
+| **Access**               | O(1)            | O(1)             | Accessing an element by index      |
+| **Search**               | O(n)            | O(1)             | Finding an element by value        |
+| **Insertion**            |                 |                  |                                    |
+| - At end (push)          | O(1)            | O(1)             | Adding element to the end          |
+| - At beginning (unshift) | O(n)            | O(1)             | Adding element to the beginning    |
+| - At middle (splice)     | O(n)            | O(1)             | Adding element at specific index   |
+| **Deletion**             |                 |                  |                                    |
+| - From end (pop)         | O(1)            | O(1)             | Removing last element              |
+| - From beginning (shift) | O(n)            | O(1)             | Removing first element             |
+| - From middle (splice)   | O(n)            | O(1)             | Removing element at specific index |
+| **Sorting**              |                 |                  |                                    |
+| - Built-in sort          | O(n log n)      | O(log n)         | JavaScript's default sort          |
+| - Bubble Sort            | O(n²)           | O(1)             | Simple but inefficient             |
+| - Quick Sort             | O(n log n)      | O(log n)         | Efficient divide-and-conquer       |
+| - Merge Sort             | O(n log n)      | O(n)             | Stable sorting algorithm           |
+| **Other Operations**     |                 |                  |                                    |
+| - Slice                  | O(n)            | O(n)             | Creating a copy of portion         |
+| - Concat                 | O(n)            | O(n)             | Combining arrays                   |
+| - Reverse                | O(n)            | O(1)             | Reversing array in place           |
+| - Join                   | O(n)            | O(n)             | Converting to string               |
+
+### Key Insights:
+
+1. **Random Access**: Arrays excel at O(1) access by index due to contiguous memory allocation
+2. **Insertion/Deletion at Ends**: Very efficient O(1) operations
+3. **Insertion/Deletion at Beginning/Middle**: Requires shifting elements, making it O(n)
+4. **Search**: Linear time O(n) as you may need to check every element
+5. **Sorting**: Most efficient algorithms achieve O(n log n) time complexity
+
+### Practical Examples:
+
+```javascript
+// O(1) - Constant time operations
+const arr = [1, 2, 3, 4, 5];
+arr[2]; // Access by index
+arr.push(6); // Add to end
+arr.pop(); // Remove from end
+
+// O(n) - Linear time operations
+arr.indexOf(3); // Search by value
+arr.unshift(0); // Add to beginning
+arr.shift(); // Remove from beginning
+arr.splice(2, 1); // Remove from middle
+
+// O(n log n) - Sorting
+arr.sort(); // Built-in sort
+```
+
+### When to Use Arrays:
+
+**Best for:**
+
+- Frequent random access by index
+- Adding/removing elements at the end
+- When you know the size in advance
+- Sequential data processing
+
+**Consider alternatives when:**
+
+- Frequent insertions/deletions at beginning
+- Need to search frequently (consider Set/Map)
+- Dynamic size requirements (consider LinkedList)
