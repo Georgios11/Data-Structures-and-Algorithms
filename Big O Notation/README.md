@@ -259,3 +259,17 @@ console.timeEnd('Find Power 2'); //Find Power 2: 0.02880859375 ms
 ```
 
 **As the input data set grows, it gets more efficient**
+
+## Space Complexity
+
+**Space complexity refers to the amount of memory or storage space that a function/algorithm consumes based on the size of its input**
+
+**Both time and space complexity are expressed in Big O Notation**
+
+**In many cases, the space complexity of a function will be the same as the time complexity, however, this is not always the case**
+
+### Space Complexity Rules
+
+1. Variables & data structures take up space
+2. Function calls take up space
+3. The space complexity of a function is the sum of the space complexities of that functions variables, data structures and function calls
