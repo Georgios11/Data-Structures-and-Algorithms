@@ -69,7 +69,7 @@ const arr1 = [1, 2, 3, 4, 5];
 // console.timeEnd('Access element 1');
 
 // const arr2 = new Array(1000).fill(2);
-const arr2 = Array.from({ length: 1000000 }, (_, i) => i + 1);
+const arr2 = Array.from({ length: 10000 }, (_, i) => i + 1);
 // console.time('Access element 1');
 // console.log(accessElement(arr2, 333));
 // console.timeEnd('Access element 1');
@@ -89,10 +89,33 @@ function sumArray(arr) {
   return sum;
 }
 
-console.time('sumArray 1');
-console.log(sumArray(arr1));
-console.timeEnd('sumArray 1');
+// console.time('sumArray 1');
+// console.log(sumArray(arr1));
+// console.timeEnd('sumArray 1');
 
-console.time('sumArray 2');
-console.log(sumArray(arr2));
-console.timeEnd('sumArray 2');
+// console.time('sumArray 2');
+// console.log(sumArray(arr2));
+// console.timeEnd('sumArray 2');
+
+// Quadratic Time Complexity
+
+// **O(n²) -> O of n squared**
+
+function sumArray2(arr) {
+  let sum1 = 0;
+  let sum2 = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    sum1 += arr[i];
+    for (let j = 0; j < arr.length; j++) {
+      sum2 += arr[j];
+    }
+  }
+  return sum1 + sum2;
+}
+console.time('sumArray1');
+console.log(sumArray2(arr1));
+console.timeEnd('sumArray1');
+console.time('sumArray2');
+console.log(sumArray2(arr2));
+console.timeEnd('sumArray2');

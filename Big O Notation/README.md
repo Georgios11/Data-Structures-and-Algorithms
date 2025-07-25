@@ -194,3 +194,32 @@ console.time('sumArray 2');
 console.log(sumArray(arr2));
 console.timeEnd('sumArray 2');
 ```
+
+## Quadratic Time Complexity
+
+**O(n²) -> O of n squared**
+
+**Quadratic time complexity means that the time required to complete a function is proportional to the square of the input data set**
+
+**Less efficient than linear time**
+
+```javascript
+function sumArray2(arr) {
+  let sum1 = 0;
+  let sum2 = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    sum1 += arr[i];
+    for (let j = 0; j < arr.length; j++) {
+      sum2 += arr[j];
+    }
+  }
+  return sum1 + sum2;
+}
+console.time('sumArray1');
+console.log(sumArray2(arr1)); //90;
+console.timeEnd('sumArray1'); //0.097900390625 ms
+console.time('sumArray2');
+console.log(sumArray2(arr2)); //500100005000
+console.timeEnd('sumArray2'); //sumArray2: 98.31103515625 ms
+```
