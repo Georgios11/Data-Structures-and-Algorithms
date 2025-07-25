@@ -110,6 +110,37 @@ function findMissingLetter(arr) {
  Challenge: Are all characters unique?
 Instructions
 Write a function called areAllCharactersUnique that takes in a string and returns true or false depending on whether all characters in the string are unique (i.e., no character is repeated).
+ */
+function areAllCharactersUnique1(str) {
+  let chars = [];
 
-Function Signature
+  for (let i = 0; i < str.length; i++) {
+    if (chars.includes(str[i])) {
+      return true;
+    }
+    chars.push(str[i]);
+  }
+  return false;
+}
+// console.log(areAllCharactersUnique1('paokara'));
+function areAllCharactersUnique(str) {
+  const chars = {};
+  string = str.replaceAll(' ', '');
+  for (let i = 0; i < str.length; i++) {
+    const char = string[i];
+    if (chars[char]) {
+      return false;
+    }
+    chars[char] = true;
+  }
+  return true;
+}
+// console.log(areAllCharactersUnique('gamo tin trela mou'));
+/**
+ * Explanation
+This solution  we use an object instead of a Set to keep track of the characters we've seen so far.
+
+Then we iterate through the string and check if the current character is in the object. If it is, we return false because it means we've seen the character before. If it isn't, we add it to the object.
+
+If we make it through the entire string without returning false, we return true because it means we haven't seen any characters more than once.
  */
