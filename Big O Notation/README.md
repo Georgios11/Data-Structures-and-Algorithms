@@ -169,3 +169,28 @@ console.time('Access element 1');
 console.log(accessElement(arr2, 333));
 console.timeEnd('Access element 1');
 ```
+
+## Linear Time Complexity
+
+**O(n) -> O of n**
+
+**Linear Time Complexity means that the time required to complete a function is directly proportional to the size of the input data set**
+
+```javascript
+function sumArray(arr) {
+  let sum = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}
+
+console.time('sumArray 1');
+console.log(sumArray(arr1));
+console.timeEnd('sumArray 1');
+
+console.time('sumArray 2');
+console.log(sumArray(arr2));
+console.timeEnd('sumArray 2');
+```
