@@ -223,3 +223,39 @@ console.time('sumArray2');
 console.log(sumArray2(arr2)); //500100005000
 console.timeEnd('sumArray2'); //sumArray2: 98.31103515625 ms
 ```
+
+## Logarithmic Time Complexity
+
+**O(log n) -> O of log n**
+
+**Logarithmic time means that the time required to complete a function is proportional to the logarithm of the input data set**
+
+**What it means: The work the algorithm does grows much more slowly than the input—specifically, with the logarithm of the input size. If you double the input, you only do a tiny bit more work (one extra step if using base-2 log).**
+
+- Example: Binary search in a sorted array.
+  - 10 elements → about 4 steps (since log₂10 ≈ 3.3)
+  - 1,000 elements → about 10 steps (since log₂1,000 ≈ 9.97)
+  - 1,000,000 elements → about 20 steps (since log₂1,000,000 ≈ 19.9)
+
+```javascript
+function findPower(base, exponent) {
+  if (exponent === 0) {
+    return 1;
+  }
+  if (exponent % 2 === 0) {
+    const halfPower = findPower(base, exponent / 2);
+    return halfPower * halfPower;
+  } else {
+    const halfPower = findPower(base, (exponent - 1) / 2);
+    return base * halfPower * halfPower;
+  }
+}
+console.time('Find Power 1');
+console.log(findPower(2, 100)); //1.2676506002282294e+30
+console.timeEnd('Find Power 1'); //Find Power 1: 0.119140625 ms
+console.time('Find Power 2');
+console.log(findPower(2, 1000000)); //Infinity
+console.timeEnd('Find Power 2'); //Find Power 2: 0.02880859375 ms
+```
+
+**As the input data set grows, it gets more efficient**
