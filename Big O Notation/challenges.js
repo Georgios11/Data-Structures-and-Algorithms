@@ -1,4 +1,4 @@
-//CHALLENGE
+//CHALLENGE-> Max Sub array QUADRATIC
 
 //Write a function called maxSubarraySum that takes an array of integers and a positive integer k as input. The function should find the maximum sum of any subarray of length k using an O(n^2) solution by using nested for loops.
 
@@ -80,5 +80,53 @@ const k1 = 3;
 const arr2 = [-2, -5, -3, -1, -11, -7, -6, -4];
 const k2 = 4;
 
-console.log('Max sum: ', maxSubarraySum(arr1, k1));
-console.log('Max sum: ', maxSubarraySum(arr2, k2));
+// console.log('Max sum: ', maxSubarraySum(arr1, k1));
+// console.log('Max sum: ', maxSubarraySum(arr2, k2));
+
+/**
+ * Sliding Window Technique - MAX SUB ARRAY LINEAR
+ *
+ * This function finds the maximum sum of any subarray of length k using the sliding window technique.
+ * Instead of recalculating the sum of each subarray from scratch, we maintain a "window" of k elements
+ * and slide it one position at a time, updating the sum efficiently.
+ *
+ * @param {number[]} arr - Array of integers
+ * @param {number} k - Length of subarray to find
+ * @returns {number} Maximum sum of any subarray of length k
+ *
+ * Time Complexity: O(n) - We only traverse the array once
+ * Space Complexity: O(1) - Only using constant extra space
+ */
+function maxSubarraySlidingWindow(arr, k) {
+  // Step 1: Initialize variables to track current window sum and maximum sum found
+  let currentSum = 0; // Holds the sum of the current sliding window
+  let maxSum = 0; // Holds the maximum sum found so far
+
+  // Step 2: Calculate the sum of the first window (first k elements)
+  // This gives us our initial window sum and sets maxSum to a valid starting value
+  for (let i = 0; i < k; i++) {
+    maxSum += arr[i]; // Add each element of the first window to maxSum
+  }
+
+  // Step 3: Set currentSum to the sum of the first window
+  // Now both currentSum and maxSum represent the sum of the first k elements
+  currentSum = maxSum;
+
+  // Step 4: Slide the window one position at a time and update sums
+  // Start from index k (the element after our first window ends)
+  for (let i = k; i < arr.length; i++) {
+    // Step 4a: Slide the window by removing the leftmost element and adding the new rightmost element
+    // arr[i - k] is the element leaving the window (leftmost element of previous window)
+    // arr[i] is the new element entering the window (rightmost element of new window)
+    currentSum = currentSum - arr[i - k] + arr[i];
+
+    console.log('Current sum :', currentSum); // Debug: show the sum of current window
+
+    // Step 4b: Update maxSum if the current window has a higher sum
+    maxSum = Math.max(maxSum, currentSum);
+  }
+
+  // Step 5: Return the maximum sum found across all windows
+  return maxSum;
+}
+// console.log('Max sum: ', maxSubarraySlidingWindow(arr1, 3));

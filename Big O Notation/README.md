@@ -273,3 +273,98 @@ console.timeEnd('Find Power 2'); //Find Power 2: 0.02880859375 ms
 1. Variables & data structures take up space
 2. Function calls take up space
 3. The space complexity of a function is the sum of the space complexities of that functions variables, data structures and function calls
+
+## Sliding Window Technique
+
+The sliding window technique is a powerful algorithmic approach used to solve various array or string-related problems efficiently. It involves maintaining a "window" that slides through an array or string, allowing you to track and process a subset of elements without the need for nested loops.
+
+This technique can be used to maximize the time complexity of your algorithms. In the last video, we did a sub array sum algorithm that used nested for loops and had a time and space complexity of O(n^2), which is not very efficient. In the next video, we're going to refactor that solution and make it linear O(n) by using this sliding window technique. The reason I'm showing you this technique is to give you an example of doing the same thing and improving efficiency and complexity.
+
+- Finding subarrays with specific properties
+- Calculating sums, averages, or other metrics over a fixed-size window
+- Finding the longest/shortest substring with certain characteristics
+- Optimizing algorithms that would otherwise use nested loops
+
+### How It Works
+
+1. **Initialize Variables**: Set up two pointers, usually named left and right, to define the boundaries of the sliding window. Additionally, you might need variables to store the current state, like sums or frequencies. For our example, we'll need a currentSum and maxSum
+2. **Initial Window**: We start by positioning the window at the beginning of the array or string and calculate the initial state or value based on the elements within the window. Since we're getting the sum of k elements, we'll start with a window of k elements. In this example k or the window size is 3.
+3. **Slide the Window**: We'll move the right pointer to the right, expanding the window by one element. Update the state or value based on the newly added element. In our case, we would calculate the new sum with the new element.
+4. **Adjust the Window**: Depending on specific conditions or constraints, you might need to shrink or adjust the window by moving the left pointer to the right, thus excluding an element from the window. Again, update the state accordingly.
+5. **Repeat**: Continue sliding and adjusting the window until the right pointer reaches the end of the array or string. During this process, keep track of the desired information (maximum/minimum, frequency, substring, etc.).
+
+### Advantages
+
+- **Optimized Time Complexity**: Sliding window reduces the time complexity by avoiding redundant calculations. It's particularly beneficial for situations where brute-force solutions would require nested loops.
+- **Space Efficiency**: The technique doesn't require storing all individual subarrays or substrings, reducing memory usage.
+
+- **Elegant -Simple Solutions**: Once understood, sliding window problems often become easier to solve compared to their naive counterparts.
+
+### Notes
+
+- Sliding window is best suited for problems that involve contiguous subarrays or substrings.
+- The technique can have variations such as dynamic window size or two-pointer sliding.
+- Be cautious of edge cases where the window size becomes important for efficiency or correctness.
+
+### Example: Maximum Sum Subarray of Size K
+
+```javascript
+function maxSumSubarray(arr, k) {
+  let maxSum = 0;
+  let windowSum = 0;
+
+  // Calculate sum of first window
+  for (let i = 0; i < k; i++) {
+    windowSum += arr[i];
+  }
+  maxSum = windowSum;
+
+  // Slide the window
+  for (let i = k; i < arr.length; i++) {
+    windowSum = windowSum - arr[i - k] + arr[i]; // Remove first, add new
+    maxSum = Math.max(maxSum, windowSum);
+  }
+
+  return maxSum;
+}
+
+// Example usage
+const arr = [1, 4, 2, 10, 2, 3, 1, 0, 20];
+console.log(maxSumSubarray(arr, 4)); // Output: 24 (subarray [2, 10, 2, 3])
+```
+
+### Time Complexity Analysis
+
+- **Time Complexity**: O(n) - we only traverse the array once
+- **Space Complexity**: O(1) - we only use a constant amount of extra space
+- **Without sliding window**: This would typically require O(n\*k) time with nested loops
+
+### Variable Window Example: Longest Substring Without Repeating Characters
+
+```javascript
+function longestSubstringWithoutRepeating(str) {
+  let start = 0;
+  let maxLength = 0;
+  let charMap = new Map();
+
+  for (let end = 0; end < str.length; end++) {
+    const currentChar = str[end];
+
+    // If character exists in current window, move start pointer
+    if (charMap.has(currentChar) && charMap.get(currentChar) >= start) {
+      start = charMap.get(currentChar) + 1;
+    }
+
+    charMap.set(currentChar, end);
+    maxLength = Math.max(maxLength, end - start + 1);
+  }
+
+  return maxLength;
+}
+
+// Example usage
+console.log(longestSubstringWithoutRepeating('abcabcbb')); // Output: 3 ("abc")
+console.log(longestSubstringWithoutRepeating('bbbbb')); // Output: 1 ("b")
+```
+
+This technique is essential for optimizing array/string processing algorithms and is frequently used in coding interviews and real-world applications.
