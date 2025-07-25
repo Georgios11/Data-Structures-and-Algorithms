@@ -217,3 +217,59 @@ function findSum(arr) {
   }
   return sum;
 }
+
+//CHALLENGE
+
+//Write a function called maxSubarraySum that takes an array of integers and a positive integer k as input. The function should find the maximum sum of any subarray of length k using an O(n^2) solution by using nested for loops.
+
+// O(n²) - Quadratic Time Complexity Solution
+// O(1) - Constant Space Complexity
+function maxSubarraySum(arr, k) {
+  let maxSum = -Infinity; // Initialize to negative infinity to handle all negative arrays
+
+  // Outer loop: i represents the STARTING position of each subarray
+  // We only need to check positions where a complete subarray of length k can fit
+  // If array length is 8 and k=3, we can start at positions: 0,1,2,3,4,5 (6 positions total)
+  // Last valid starting position = arr.length - k = 8 - 3 = 5
+  // Starting at position 6 would give us [arr[6], arr[7]] which is only 2 elements, not 3
+  for (let i = 0; i <= arr.length - k; i++) {
+    let currentSum = 0; // Reset sum for each new subarray
+
+    // Inner loop: j represents each element within the current subarray
+    // j starts at i (the starting position of current subarray)
+    // j goes up to i + k - 1 (to get exactly k elements)
+    // Example: if i=2 and k=3, we want elements at positions: 2, 3, 4
+    // So j goes from 2 to 2+3-1 = 4 (inclusive)
+    for (let j = i; j < i + k; j++) {
+      currentSum += arr[j]; // Add current element to subarray sum
+    }
+
+    // Update maxSum if current subarray sum is larger
+    if (currentSum > maxSum) {
+      maxSum = currentSum;
+    }
+  }
+
+  return maxSum;
+}
+
+// Example usage and explanation:
+// const arr = [1, 4, 2, 10, 2, 3, 1, 0, 20];
+// const k = 3;
+//
+// Subarrays of length 3:
+// i=0: [1,4,2] → sum = 7
+// i=1: [4,2,10] → sum = 16
+// i=2: [2,10,2] → sum = 14
+// i=3: [10,2,3] → sum = 15
+// i=4: [2,3,1] → sum = 6
+// i=5: [3,1,0] → sum = 4
+// i=6: [1,0,20] → sum = 21 ← Maximum sum
+//
+// Result: 21
+
+// Test the function
+console.log(
+  'Max subarray sum:',
+  maxSubarraySum([1, 4, 2, 10, 2, 3, 1, 0, 20], 3)
+); // Should output 21
