@@ -147,3 +147,25 @@ arr.sort(); // Built-in sort
 - Frequent insertions/deletions at beginning
 - Need to search frequently (consider Set/Map)
 - Dynamic size requirements (consider LinkedList)
+
+## Constant Time Complexity
+
+**O(1) -> O of 1**
+
+- Constant time complexity means that the time required to complete a function is the same regardless of the size of the input data set.
+
+```javascript
+function accessElement(arr, index) {
+  return arr[index];
+}
+const arr1 = [1, 2, 3, 4, 5];
+console.time('Access element 1');
+console.log(accessElement(arr1, 3));
+console.timeEnd('Access element 1');
+
+// const arr2 = new Array(1000).fill(2);
+const arr2 = Array.from({ length: 10000 }, (_, index) => index);
+console.time('Access element 1');
+console.log(accessElement(arr2, 333));
+console.timeEnd('Access element 1');
+```
