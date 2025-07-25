@@ -144,3 +144,25 @@ Then we iterate through the string and check if the current character is in the 
 
 If we make it through the entire string without returning false, we return true because it means we haven't seen any characters more than once.
  */
+
+//Write a function called findFirstNonRepeatingCharacter that takes in a string and returns the first non-repeating character in the string. If there are no non-repeating characters, the function should return null.
+function findFirstNonRepeatingCharacter(str) {
+  const chars = {};
+  for (let i = 0; i < str.length; i++) {
+    chars[str[i]] = (chars[str[i]] || 0) + 1;
+  }
+  for (const char of str) {
+    if (chars[char] === 1) return char;
+  }
+  return null;
+}
+// console.log(findFirstNonRepeatingCharacter('PAOK'));
+console.log(findFirstNonRepeatingCharacter('aabbccdd'));
+
+/**
+ Explanation
+Initialize an empty object to keep track of the number of times each character appears in the string.
+Iterate through the string and add each character to the object. If the character is already in the object, we increment its count by 1. If it isn't, we set its count to 1.
+Iterate through the string again and check the object to see if the current character has a count of 1. If it does, return it because it's the first non-repeating character.
+If we make it through the entire string without returning a character, we return null because there are no non-repeating characters.
+ */
