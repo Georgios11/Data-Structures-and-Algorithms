@@ -48,4 +48,82 @@ const countOccurrences2 = (str, char) => str.split('A').length - 1;
 // 2. str.split('A') = ["P", "OK", "R", ""] (4 elements)
 // 3. .length = 4
 // 4. - 1 = 3 (which is the correct count of 'A' characters)
-console.log(countOccurrences2('PAOKARA'));
+// console.log(countOccurrences2('PAOKARA'));
+
+// Write a function called findMaxNumber that takes in an array of numbers and returns the largest number in the array.
+function findMaxNumber(arr) {
+  console.log(...arr);
+  return Math.max(...arr);
+}
+
+// console.log(findMaxNumber([1, 2, 3]));
+function findMaxNumber2(arr) {
+  let max = arr[0];
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] > max) max = arr[i];
+  }
+  return max;
+}
+// console.log(findMaxNumber2([1, 2, 333, 3, 4, 5]));
+
+//Write a function called titleCase that takes in a string and returns the string with the first letter of each word capitalized.
+
+function titleCase(str) {
+  const words = str.toLowerCase().split(' ');
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+  }
+  return words.join(' ');
+}
+// console.log(titleCase('paokara ole leme'));
+
+// Write a function called reverseString that takes in a string and returns the reverse of that string. In this section, we are really focusing on loops without using any built-in methods, so try that first. If you get stuck, you can always use the built-in methods to solve the problem.
+
+function reverseString(str) {
+  let reversed = '';
+  for (let i = str.length - 1; i >= 0; i--) {
+    reversed += str[i];
+  }
+  return reversed;
+}
+// console.log(reverseString('Anna'));
+
+// Write a function called isPalindrome that takes in a string and returns true if the string is a palindrome and false if it is not.
+
+function isPalindrome(str) {
+  let reversed = '';
+  for (let i = str.length - 1; i >= 0; i--) {
+    reversed += str[i].toLowerCase();
+  }
+  return reversed === str.toLowerCase();
+}
+// console.log(isPalindrome('Madam'));
+
+//Write a function called countVowels that takes in a string and returns the number of vowels in the string.
+
+function countVowels(str) {
+  let count = 0;
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  const letters = str.toLowerCase().split('');
+  for (const letter of letters) {
+    if (vowels.includes(letter)) count++;
+  }
+  return count;
+}
+// console.log(countVowels('paokara ole leme'));
+
+// Write a function called removeDuplicates that takes in an array and returns a new array with duplicates removed.
+
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
+}
+// console.log(removeDuplicates([1, 2, 1, 'a', 'b', 'a']));
+function removeDuplicates1(arr) {
+  const noDuplicates = [];
+  for (const element of arr) {
+    if (!noDuplicates.includes(element)) noDuplicates.push(element);
+  }
+  return noDuplicates;
+}
+console.log(removeDuplicates1([1, 2, 1, 'a', 'b', 'a']));
