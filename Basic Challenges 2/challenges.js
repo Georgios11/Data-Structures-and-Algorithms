@@ -86,4 +86,30 @@ function findMissingNumber(arr) {
   return expectedSum - actualSum;
 }
 
-console.log(findMissingNumber([1, 2, 3, 5]));
+// console.log(findMissingNumber([1, 2, 3, 5]));
+
+/** 
+Challenge: Find Missing Letter
+Instructions
+Write a function called findMissingLetter that takes in an array of consecutive (increasing) letters as input and returns the missing letter in the array.
+*/
+function findMissingLetter(arr) {
+  const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const startIndex = alphabet.indexOf(arr[0]);
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== alphabet[startIndex + i]) {
+      return alphabet[startIndex + i];
+    }
+  }
+
+  return '';
+}
+
+/**
+ Challenge: Are all characters unique?
+Instructions
+Write a function called areAllCharactersUnique that takes in a string and returns true or false depending on whether all characters in the string are unique (i.e., no character is repeated).
+
+Function Signature
+ */
