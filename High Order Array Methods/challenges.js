@@ -28,4 +28,29 @@ function calculateTotalSalesWithTax(products, tax) {
   }, 0);
   return result + (result * tax) / 100;
 }
-console.log(calculateTotalSalesWithTax(products, 8));
+// console.log(calculateTotalSalesWithTax(products, 8));
+
+/**
+ * Challenge: Highest Scoring Word
+Instructions
+Given a string of words, you need to find the highest scoring word. Each letter of a word scores points according to its position in the alphabet: a = 1, b = 2, c = 3, and so on.
+
+You need to return the highest scoring word as a string.
+
+If two words score the same, return the word that appears earliest in the original string.
+
+All letters will be lowercase and all inputs will be valid.
+ */
+const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+function highestScoringWord(str) {
+  let result = {};
+  const words = str.split(' ');
+  for (const word of words) {
+    result[word] = 0;
+    for (const letter of word) {
+      result[word] += alphabet.indexOf(letter) + 1;
+    }
+  }
+  console.log(result);
+}
+highestScoringWord('paokara ole leme');
