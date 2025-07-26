@@ -202,4 +202,32 @@ function diceGameSimulation(num) {
 
   return arr;
 }
-console.log(diceGameSimulation(4));
+// console.log(diceGameSimulation(4));
+
+//Format Phone Number
+function formatPhoneNumber(arr) {
+  if (arr.length !== 10) throw new Error('Invalid numbers');
+
+  for (const number of arr) {
+    if (number < 0 || number > 9 || typeof number !== 'number')
+      throw new Error('invalid data');
+  }
+
+  let areaCode = arr.slice(0, 3).join('');
+  console.log(areaCode);
+  let prefix = arr.slice(3, 6).join('');
+  console.log(prefix);
+  let lineNumber = arr.slice(6).join('');
+  console.log(lineNumber);
+  return `(${areaCode}) ${prefix}-${lineNumber}`;
+}
+// console.log(formatPhoneNumber([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]));
+
+//Validate Email
+function validateEmail(str) {
+  if (!str.includes('@') || !str.includes('.')) {
+    return 'Invalid email address';
+  }
+  return null;
+}
+// console.log(validateEmail('sfdemail.com'));
