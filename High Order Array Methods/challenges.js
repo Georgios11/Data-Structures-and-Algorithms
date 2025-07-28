@@ -91,4 +91,20 @@ function validAnagrams(str1, str2) {
     value => letters1[value] === letters2[value]
   );
 }
-console.log(validAnagrams('listen', 'silent'));
+// console.log(validAnagrams('listen', 'silent'));
+
+/**
+ * Challenge: Hashtag Generator
+Instructions
+Write a function called generateHashtag that takes a string as input and returns a hashtag-generated string according to the rules below. If the generated hashtag string is longer than 140 characters or the input/result is an empty string, the function should return false.
+ */
+function generateHashtag(str) {
+  if (str.trim() === '') return false;
+  const words = str.trim().split(' ');
+  const capitalizedWords = words.map(
+    word => word.charAt(0).toUpperCase() + word.slice(1)
+  );
+  const hashtag = '#' + capitalizedWords.join('');
+  return hashtag;
+}
+console.log(generateHashtag('PAOKara ole '));
