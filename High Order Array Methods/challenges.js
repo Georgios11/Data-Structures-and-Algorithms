@@ -107,4 +107,22 @@ function generateHashtag(str) {
   const hashtag = '#' + capitalizedWords.join('');
   return hashtag;
 }
-console.log(generateHashtag('PAOKara ole '));
+// console.log(generateHashtag('PAOKara ole '));
+
+/**
+ * Challenge: Valid IPv4 Addresses
+Instructions
+Write a function called isValidIPv4 that takes a string as input and returns true if the input is a valid IPv4 address in dot-decimal format, and false otherwise. An IPv4 address should consist of four octets, with values between 0 and 255, inclusive.
+ */
+
+function isValidIPv4(ip) {
+  let address = ip.split('.');
+  if (address.length !== 4) return false;
+
+  for (const piece of address) {
+    if (Number(piece) < 0 || Number(piece) > 255) return false;
+  }
+  return true;
+}
+// console.log(isValidIPv4('123.23.123.123'));
+// console.log(isValidIPv4('03.23.123.123'));
