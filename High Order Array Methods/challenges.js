@@ -162,4 +162,38 @@ function analyzeCarMileage(cars) {
   );
   return { totalMileage, averageMileage, highestMileageCar, lowestMileageCar };
 }
-console.log(analyzeCarMileage(cars));
+// console.log(analyzeCarMileage(cars));
+
+/**
+ * Challenge: Password Validation
+Instructions
+Write a function called validatePassword that takes in a string and validates it based on the following criteria:
+
+The password must be at least 8 characters long.
+The password must contain at least one uppercase letter.
+The password must contain at least one lowercase letter.
+The password must contain at least one digit.
+
+The function should return true if the password is valid according to the criteria, and false otherwise.
+
+
+ */
+
+function validatePassword(password) {
+  if (password.length < 8) return false;
+  const chars = password.split('');
+  const upper = chars.some(
+    char => char.charCodeAt(0) > 64 && char.charCodeAt(0) < 90
+  );
+  if (!upper) return upper;
+  const lower = chars.some(
+    char => char.charCodeAt(0) > 96 && char.charCodeAt(0) < 123
+  );
+  if (!lower) return lower;
+  const hasNumber = chars.some(
+    char => char.charCodeAt(0) >= 48 && char.charCodeAt(0) <= 57
+  );
+  if (!hasNumber) return hasNumber;
+  return true;
+}
+console.log(validatePassword('P3aokara ole leme .'));
