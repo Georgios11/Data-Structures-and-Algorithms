@@ -64,4 +64,31 @@ function highestScoringWord(str) {
   return words[highestIndex];
 }
 
-console.log(highestScoringWord('paokara ole leme'));
+// console.log(highestScoringWord('paokara ole leme'));
+
+/**
+ * Challenge: Valid Anagrams
+Instructions
+Write a function called validAnagrams that takes in two strings and determines whether they are valid anagrams of each other. An anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+ */
+function validAnagrams(str1, str2) {
+  if (str1.length !== str2.length) return false;
+  const letters1 = {};
+  const letters2 = {};
+  for (const letter of str1) {
+    letters1[letter] = (letters1[letter] || 0) + 1;
+  }
+  for (const letter of str2) {
+    letters2[letter] = (letters2[letter] || 0) + 1;
+  }
+  // for (let key in letters1) {
+  //   if (letters1[key] !== letters2[key]) return false;
+  // }
+  // return true;
+  console.log(Object.values(letters1));
+  console.log(Object.keys(letters2));
+  return Object.values(letters1).every(
+    value => letters1[value] === letters2[value]
+  );
+}
+console.log(validAnagrams('listen', 'silent'));
