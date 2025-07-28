@@ -41,16 +41,27 @@ If two words score the same, return the word that appears earliest in the origin
 
 All letters will be lowercase and all inputs will be valid.
  */
-const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
 function highestScoringWord(str) {
-  let result = {};
   const words = str.split(' ');
-  for (const word of words) {
-    result[word] = 0;
+  // const scores = words.map(word =>
+  //   Array.from(word).reduce(
+  //     (score, letter) => score + letter.charCodeAt(0) - 96,
+
+  //     0
+  //   )
+  // );
+  const scores = words.reduce((score, word) => {
+    let tempScore = 0;
     for (const letter of word) {
-      result[word] += alphabet.indexOf(letter) + 1;
+      tempScore += letter.charCodeAt(0) - 96;
     }
-  }
-  console.log(result);
+    score.push(tempScore);
+    return score;
+  }, []);
+  const highestScore = Math.max(...scores);
+  const highestIndex = scores.indexOf(highestScore);
+  return words[highestIndex];
 }
-highestScoringWord('paokara ole leme');
+
+console.log(highestScoringWord('paokara ole leme'));
