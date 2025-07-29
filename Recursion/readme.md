@@ -164,3 +164,61 @@ return 4 * 2 = 8
 return 8 * 2 = 16
 return 16 * 2 = 32
 ```
+
+## Array Sum
+
+The array sum problem involves calculating the sum of all elements in an array using recursion. This is another classic example of breaking down a problem into smaller subproblems.
+
+```javascript
+const arr = [1, 2, 3, 4];
+function sum(arr) {
+  if (arr.length === 1) return arr[0];
+
+  return arr[arr.length - 1] + sum(arr.slice(0, -1));
+}
+```
+
+### Explanation
+
+- **Base Case:** When the array has only one element (`arr.length === 1`), we return that element directly.
+- **Recursive Case:** For arrays with more than one element, we:
+  1. Take the last element of the array (`arr[arr.length - 1]`)
+  2. Add it to the sum of the remaining elements (`sum(arr.slice(0, -1))`)
+  3. The `slice(0, -1)` method creates a new array with all elements except the last one
+
+### How It Works: Step-by-Step Breakdown
+
+**Goal:** Calculate the sum of array `[1, 2, 3, 4]` (result should be 10)
+
+**The Recursive Process:**
+
+1. **Initial Call:** `sum([1, 2, 3, 4])`
+
+   - Array length is 4, so base case is skipped
+   - Returns `4 + sum([1, 2, 3])`
+
+2. **Recursive Calls (Building the Stack):**
+
+   - `sum([1, 2, 3])` returns `3 + sum([1, 2])`
+   - `sum([1, 2])` returns `2 + sum([1])`
+   - `sum([1])` hits the base case and returns `1`
+
+3. **The Unwinding (Returning Values):**
+   - `sum([1])` returns `1`
+   - `sum([1, 2])` returns `2 + 1 = 3`
+   - `sum([1, 2, 3])` returns `3 + 3 = 6`
+   - `sum([1, 2, 3, 4])` returns `4 + 6 = 10`
+
+**Visual Representation:**
+
+```text
+
+sum([1, 2, 3, 4])
+├── 4 + sum([1, 2, 3])
+├── 3 + sum([1, 2])
+├── 2 + sum([1])
+└── 1 (base case)
+└── 2 + 1 = 3
+└── 3 + 3 = 6
+└── 4 + 6 = 10
+```

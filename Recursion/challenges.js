@@ -122,10 +122,29 @@ function power(base, exponent) {
   const result = base * power(base, exponent - 1);
   return result;
 }
-console.log(power(1, 3));
+// console.log(power(1, 3));
 
 /**
  * Explanation
 The base case of the recursion is when the exponent is 0. In this case, we return 1 because any number raised to the power of 0 is 1.
 For any other value of exponent, we break down the problem into smaller parts. To raise the base to the power of exponent, we can start by multiplying the base by the result of the function called with the same base and the exponent decremented by 1. This recursive step forms the essence of the algorithm, as it continually reduces the problem until it reaches the base case.
  */
+
+//-----------
+
+/**
+ * Challenge: Array Sum Using Recursion
+Description
+Let's practice using recursion by creating a function that calculates the sum of an array of numbers. Write a function called arraySum that takes in an array of numbers and returns their sum using recursion.
+
+Instructions
+Write a function called arraySum that takes in an array of numbers and returns their sum using recursion.
+ */
+const arr = [1, 2, 3, 4];
+function sum(arr) {
+  if (arr.length === 1) return arr[0];
+
+  return arr[arr.length - 1] + sum(arr.slice(0, -1));
+}
+console.log(sum(arr));
+console.log(arr.slice(-1));
