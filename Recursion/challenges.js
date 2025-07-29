@@ -104,4 +104,28 @@ function factorial(n) {
   return n * factorial(n - 1);
 }
 const factorial2 = n => (n === 0 || n === 1 ? 1 : n * factorial2(n - 1));
-console.log(factorial2(5));
+// console.log(factorial2(5));
+
+//---------
+
+//Power
+/**
+ * 
+
+Instructions
+Write a function called power that takes in a base and an exponent and returns the result of raising the base to the power of the exponent. Use recursion to solve this problem.
+
+ */
+function power(base, exponent) {
+  if (exponent === 0) return 1;
+  if (base === 1) return 1;
+  const result = base * power(base, exponent - 1);
+  return result;
+}
+console.log(power(1, 3));
+
+/**
+ * Explanation
+The base case of the recursion is when the exponent is 0. In this case, we return 1 because any number raised to the power of 0 is 1.
+For any other value of exponent, we break down the problem into smaller parts. To raise the base to the power of exponent, we can start by multiplying the base by the result of the function called with the same base and the exponent decremented by 1. This recursive step forms the essence of the algorithm, as it continually reduces the problem until it reaches the base case.
+ */
