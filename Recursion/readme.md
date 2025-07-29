@@ -180,45 +180,25 @@ function sum(arr) {
 
 ### Explanation
 
-- **Base Case:** When the array has only one element (`arr.length === 1`), we return that element directly.
-- **Recursive Case:** For arrays with more than one element, we:
-  1. Take the last element of the array (`arr[arr.length - 1]`)
-  2. Add it to the sum of the remaining elements (`sum(arr.slice(0, -1))`)
-  3. The `slice(0, -1)` method creates a new array with all elements except the last one
+- The `arraySum` function uses a recursive approach to calculate the sum of an array of numbers.
+- The base case is when the array is empty. In this case, the function returns 0, as the sum of an empty array is 0.
+- In the recursive case, the function adds the first element of the array (`arr[0]`) to the sum of the rest of the array (`arraySum(arr.slice(1))`).
+- The recursion continues until the array becomes empty and the base case is reached.
 
-### How It Works: Step-by-Step Breakdown
+Here's a breakdown of how the recursion progresses when calculating the sum of [1, 2, 3, 4, 5]:
 
-**Goal:** Calculate the sum of array `[1, 2, 3, 4]` (result should be 10)
+- `arraySum([1, 2, 3, 4, 5])` returns 1 + arraySum([2, 3, 4, 5])
+- `arraySum([2, 3, 4, 5])` returns 2 + arraySum([3, 4, 5])
+- `arraySum([3, 4, 5])` returns 3 + arraySum([4, 5])
+- `arraySum([4, 5])` returns 4 + arraySum([5])
+- `arraySum([5])` returns 5 + arraySum([])
+- `arraySum([])` reaches the base case and returns 0
+- At this point, the recursive calls start "unwinding," and the values are added up:
 
-**The Recursive Process:**
+- 5 + 0 = 5 Returned from arraySum([5])
+- 4 + 5 = 9 Returned from arraySum([4, 5])
+- 3 + 9 = 12 Returned from arraySum([3, 4, 5])
+- 2 + 12 = 14 Returned from arraySum([2, 3, 4, 5])
+- 1 + 14 = 15 Returned from arraySum[1, 2, 3, 4, 5]
 
-1. **Initial Call:** `sum([1, 2, 3, 4])`
-
-   - Array length is 4, so base case is skipped
-   - Returns `4 + sum([1, 2, 3])`
-
-2. **Recursive Calls (Building the Stack):**
-
-   - `sum([1, 2, 3])` returns `3 + sum([1, 2])`
-   - `sum([1, 2])` returns `2 + sum([1])`
-   - `sum([1])` hits the base case and returns `1`
-
-3. **The Unwinding (Returning Values):**
-   - `sum([1])` returns `1`
-   - `sum([1, 2])` returns `2 + 1 = 3`
-   - `sum([1, 2, 3])` returns `3 + 3 = 6`
-   - `sum([1, 2, 3, 4])` returns `4 + 6 = 10`
-
-**Visual Representation:**
-
-```text
-
-sum([1, 2, 3, 4])
-├── 4 + sum([1, 2, 3])
-├── 3 + sum([1, 2])
-├── 2 + sum([1])
-└── 1 (base case)
-└── 2 + 1 = 3
-└── 3 + 3 = 6
-└── 4 + 6 = 10
-```
+So, the final result is 15, which is the sum of all the numbers in the original array [1, 2, 3, 4, 5].

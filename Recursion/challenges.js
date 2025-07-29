@@ -146,5 +146,6 @@ function sum(arr) {
 
   return arr[arr.length - 1] + sum(arr.slice(0, -1));
 }
+
 console.log(sum(arr));
 console.log(arr.slice(-1));
