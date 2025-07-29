@@ -89,4 +89,19 @@ function fibonacci(n) {
   return result;
 }
 const fibonacci2 = n => (n < 2 ? n : fibonacci2(n - 1) + fibonacci2(n - 2));
-console.log(fibonacci(4));
+// console.log(fibonacci(4));
+
+//---------
+
+// Factorial
+/**
+ * The factorial of a number/integer is the product of that number and all of the numbers below it. It is denoted as 5! (factorial of 5).
+ * Instructions
+Write a function called factorial that takes in a number and returns the factorial of that number.
+ */
+function factorial(n) {
+  if (n === 0 || n === 1) return 1;
+  return n * factorial(n - 1);
+}
+const factorial2 = n => (n === 0 || n === 1 ? 1 : n * factorial2(n - 1));
+console.log(factorial2(5));

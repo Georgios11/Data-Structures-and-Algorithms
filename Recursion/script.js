@@ -29,4 +29,6 @@ function sumUpTo(n) {
   return result;
 }
 const result = sumUpTo(5);
-console.log(result);
+// console.log(result);
+
+function factorial(n) {}

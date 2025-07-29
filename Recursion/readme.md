@@ -105,3 +105,16 @@ sumUpTo(5) returns 15
 - **Unwinding:** After base case, functions return values in reverse order
 
 ## Fibonacci Sequence
+
+## Factorial
+
+The factorial of a number/integer is the product of that number and all of the numbers below it. It is denoted as 5! (factorial of 5).
+
+```text
+- 0! = 1
+- 1! = 1
+- 2! = 2 * 1 = 2
+- 3! = 3 * 2 * 1 = 6
+- 4! = 4 * 3 * 2  * 1 = 24
+- 5! = 5 * 4 * 3 * 2 * 1 = 120
+```
