@@ -103,3 +103,5 @@ sumUpTo(5) returns 15
 - **Recursive Case:** Breaks problem into smaller subproblem (n + sumUpTo(n-1))
 - **Call Stack:** Each recursive call adds a new function to the stack
 - **Unwinding:** After base case, functions return values in reverse order
+
+## Fibonacci Sequence

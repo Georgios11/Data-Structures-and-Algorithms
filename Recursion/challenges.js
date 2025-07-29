@@ -81,3 +81,12 @@ So we can see that F(2) = 1 + 0 = 1, F(3) = 1 + 1 = 2, F(4) = 2 + 1 = 3, and F(5
 Instructions
 Write a function called fibonacci that takes in a number and returns the number at that index of the Fibonacci sequence.
  */
+function fibonacci(n) {
+  console.log(`calculating fibonacci(${n})`);
+  if (n < 2) return n;
+
+  const result = fibonacci(n - 1) + fibonacci(n - 2);
+  return result;
+}
+const fibonacci2 = n => (n < 2 ? n : fibonacci2(n - 1) + fibonacci2(n - 2));
+console.log(fibonacci(4));
