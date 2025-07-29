@@ -147,5 +147,23 @@ function sum(arr) {
   return arr[arr.length - 1] + sum(arr.slice(0, -1));
 }
 
-console.log(sum(arr));
-console.log(arr.slice(-1));
+// console.log(sum(arr));
+// console.log(arr.slice(-1));
+
+//-------
+
+/**
+ * Challenge: Number Range Using Recursion
+Instructions
+Write a function called numberRange that takes in a startNum and an endNum and returns an array of numbers from startNum to endNum, inclusive. Be sure to use recursion in your solution.
+
+Function Signature
+ */
+function numberRange(start, end) {
+  if (start === end) return [start];
+
+  const numbers = numberRange(start, end - 1);
+  numbers.push(end);
+  return numbers;
+}
+console.log(numberRange(3, 9));

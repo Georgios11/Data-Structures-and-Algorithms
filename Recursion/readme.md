@@ -202,3 +202,5 @@ Here's a breakdown of how the recursion progresses when calculating the sum of [
 - 1 + 14 = 15 Returned from arraySum[1, 2, 3, 4, 5]
 
 So, the final result is 15, which is the sum of all the numbers in the original array [1, 2, 3, 4, 5].
+
+## Number Range
