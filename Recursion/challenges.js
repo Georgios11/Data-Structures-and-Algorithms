@@ -166,4 +166,27 @@ function numberRange(start, end) {
   numbers.push(end);
   return numbers;
 }
-console.log(numberRange(3, 9));
+// console.log(numberRange(3, 9));
+
+/**
+ * Challenge: Flatten Array
+Instructions
+Write a function called flattenArray that takes in an array containing nested arrays of integers and returns a new array with all the integers from the nested arrays flattened into a single level.
+
+Function Signature
+ */
+function flattenArray(arr) {
+  if (!Array.isArray(arr)) return [arr];
+  let flattened = [];
+  for (const el of arr) {
+    if (Array.isArray(el)) {
+      flattened.push(...flattenArray(el));
+    } else {
+      flattened.push(el);
+    }
+  }
+  return flattened;
+}
+let arr1 = [1, 2, [3, 4, [5, 6], 7], 8];
+console.log(flattenArray(arr1));
+console.log(flattenArray(3));
