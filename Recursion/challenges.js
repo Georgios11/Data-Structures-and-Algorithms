@@ -180,7 +180,7 @@ function flattenArray(arr) {
   let flattened = [];
   for (const el of arr) {
     if (Array.isArray(el)) {
-      flattened.push(...flattenArray(el));
+      flattened.concat(flattenArray(el));
     } else {
       flattened.push(el);
     }
@@ -188,5 +188,33 @@ function flattenArray(arr) {
   return flattened;
 }
 let arr1 = [1, 2, [3, 4, [5, 6], 7], 8];
-console.log(flattenArray(arr1));
-console.log(flattenArray(3));
+const arr2 = [1, 2, 3];
+const arr3 = [4, 5, 6];
+
+// console.log(arr2.concat(arr3));
+
+// console.log(flattenArray(arr1));
+// console.log(flattenArray(3));
+
+/**
+ * Challenge: Permutations
+Instructions
+Write a function called permutations that takes in a string as a parameter and returns an array of all possible permutations of the characters in the string.
+*/
+function permutations(str) {
+  let perms = [];
+  if (str === '') {
+    perms.push('');
+    return perms;
+  }
+  for (let i = 0; i < str.length; i++) {
+    const firstChar = str[i];
+    const restOfStr = str.slice(0, i) + str.slice(i + 1);
+    const subPermutations = permutations(restOfStr);
+    for (let j = 0; j < subPermutations.length; j++) {
+      perms.push(firstChar + subPermutations[j]);
+    }
+  }
+  return perms;
+}
+console.log(permutations('paok'));
